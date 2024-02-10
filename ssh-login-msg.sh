@@ -6,8 +6,6 @@
 # © Olivetti 2020-2024
 #
 # dependencies: curl
-#
-# mostly we were sourced (${0} -> ${BASH_SOURCE} / exit -> return)
 
 version="v1.0"
 
@@ -15,8 +13,7 @@ version="v1.0"
 
 [[ -n "${SSH_CLIENT}" ]] && {
 
-   [[ -n "${BASH_SOURCE}" ]] && myname="${BASH_SOURCE[0]##*/}" || myname="${0##*/}"
-
+    myname="${BASH_SOURCE[0]##*/}"
    isodate=$(date +'%FT%T%z')
    logfile=~/"${myname}.log" # ~/ssh-login-msg.sh.log
 
@@ -38,13 +35,13 @@ version="v1.0"
   # telegram_chat_id=""   # we use env file
   # telegram bot credentials in ~/.ssh-login-msg.sh.env # use chmod 600
 
-  _error() { echo "Error: Telegram - ${1}" && return; }
+  _error() { echo "Error: Telegram - ${1}" && return ${2}; }
 
-  [[ -f ~/".${myname}.env" ]] && source ~/".${myname}.env" || _error "No env file"
+  [[ -f ~/".${myname}.env" ]] && source ~/".${myname}.env" || _error "No env file" 1
 
   [[ -n "${telegram_bot_token}" ]] && [[ -n "${telegram_chat_id}" ]]			&& \
 	telegram_url="https://api.telegram.org/bot${telegram_bot_token}/sendMessage"	|| \
-		_error "No token/chat_id"
+		_error "No token/chat_id" 2
 
   ip_padding() { echo "${1}" | sed 's/[0-9]\{1,\}/00&/g;s/0*\([0-9]\{3,\}\)/\1/g'; }
   ip_srv_pad=$(ip_padding "${ip_srv}")
