@@ -7,8 +7,10 @@
 ### Recommended
 
 - telegram bot
-    get bot token	      In telegram.app: go to **@BotFather**, enter `/mybots`, press `@your-bot-name`, press `API Token`.
-    get chat id	      In telegram.app: `/start` a »trustworthy« bot like **@Olivettis_Bot** or **@MissRose_bot** and send `/id`.
+
+> Get bot token in telegram.app: go to **@BotFather**, enter `/mybots`, press `@your-bot-name`, press `API Token`.
+
+> Get chat id   in telegram.app: `/start` a »trustworthy« bot like **@Olivettis_Bot** or **@MissRose_bot** and send `/id`.
 
 ### Installation
 1. [Download & unpack/save ](https://github.com/Olivetti/public/raw/master/ssh-login-msg.sh)
