@@ -6,6 +6,8 @@
 # © Olivetti 2020-2024
 #
 # dependencies: curl
+#
+# recommended: telegram bot
 
 version="v1.0"
 
@@ -20,14 +22,15 @@ version="v1.0"
     ip_srv=$(hostname -I		| awk '{print $1}')
     ip_usr=$(echo "${SSH_CLIENT}"	| awk '{print $1}')
 
- tokenfile=~/.config/ipinfo/config.json
+ tokenfile=~/".config/ipinfo/config.json"
  [[ -f "${tokenfile}" ]] && token=$(sed -Ee 's/.*,"token":"(.*)",.*/\1/' "${tokenfile}")
 
     ipinfo=$(curl -s "https://ipinfo.io/${ip_usr}?token=${token}")
 
-    ipinfo=$(echo "${isodate}" && echo "${ipinfo}" | sed -e '/^[{}]/d' -e 's/^  //' -e '/readme.*missingauth/d' -e 's/"//g' -e 's/,$//g')
+    ipinfo=$(echo "${isodate}" && \
+    	echo "${ipinfo}" | sed -e '/^[{}]/d' -e 's/^  //' -e '/readme.*missingauth/d' -e 's/"//g' -e 's/,$//g')
        log=$(echo $(echo "${ipinfo}"))
-       echo "${log}" >>"${logfile}" # writing logfile
+	echo "${log}" >>"${logfile}" # writing logfile
 
  send_telegram() {
   # telegram
@@ -54,7 +57,7 @@ version="v1.0"
   msg="<pre>SSH Login ${USER}@${HOSTNAME}</pre><code>Date: ${isodate}%0aUser: ${USER}@${HOSTNAME}%0aHost: ${ip_srv_pad}%0aFrom: ${ip_usr_pad}</code> \
 	<pre>${ipinfo}</pre>"
 
-  curl -s --connect-timeout 10 -d "chat_id=${telegram_chat_id}&disable_web_page_preview=1&parse_mode=HTML&text=${msg}" \
+  curl -s --connect-timeout 15 -d "disable_web_page_preview=1&parse_mode=HTML&chat_id=${telegram_chat_id}&text=${msg}" \
 	"${telegram_url}" >/dev/null
  }
 
