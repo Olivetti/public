@@ -46,7 +46,9 @@ version="v1.0"
 	telegram_url="https://api.telegram.org/bot${telegram_bot_token}/sendMessage"	|| \
 		_error "No token/chat_id" 2
 
-  ip_padding() { echo "${1}" | sed 's/[0-9]\{1,\}/00&/g;s/0*\([0-9]\{3,\}\)/\1/g'; }
+  ip_padding() { echo "${1}" | sed -r \
+				-e 's/^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})$/00\1.00\2.00\3.00\4/' \
+				-e 's/0*([0-9]{3})/\1/g'; } # ipv4 only
   ip_srv_pad=$(ip_padding "${ip_srv}")
   ip_usr_pad=$(ip_padding "${ip_usr}")
 
