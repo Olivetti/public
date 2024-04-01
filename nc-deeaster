@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+#set -vux
+#
+# nc-deeaster
+# © Olivetti 2024
+#
+# 2024: shift -5
+#
+
+version="v1"
+
+[[ "${#}" -eq 0 ]] || [[ "${1}" = "-h" ]] && echo -e "Syntax:\t${0##*/} [ -h ] easter-chiffre" && exit
+
+chiffre="${@}"
+
+echo "${chiffre}"
+
+grep -o . <<<"${chiffre}" | while read chr
+	do
+		[[ "${chr}" = [[:digit:]] ]] && echo -n "${chr}" | tr '0-9' '5-90-4'
+		[[ "${chr}" = [[:alpha:]] ]] && echo -n "${chr}" | tr 'a-z' 'v-za-u'
+	done; echo
