@@ -1,3 +1,4 @@
 gen
+*.deb
 *.tar.gz
 *.zip
