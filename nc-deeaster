@@ -9,7 +9,7 @@
 
 version="v1"
 
-[[ "${#}" -eq 0 ]] || [[ "${1}" = "-h" ]] && echo -e "Syntax:\t${0##*/} [ -h ] easter-chiffre" && exit
+[[ ${#} -eq 0 ]] || [[ "${1}" = "-h" ]] && echo -e "Syntax:\t${0##*/} [ -h ] easter-chiffre" && exit
 
 chiffre="${@}"
 
