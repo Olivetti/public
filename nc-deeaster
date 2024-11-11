@@ -7,7 +7,7 @@
 # 2024: shift -5
 #
 
-version="v1"
+version="v0"
 
 [[ ${#} -eq 0 ]] || [[ "${1}" = "-h" ]] && echo -e "Syntax:\t${0##*/} [ -h ] easter-chiffre" && exit
 
