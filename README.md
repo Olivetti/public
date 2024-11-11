@@ -2,7 +2,7 @@
 
 - [avx-turbo     ](https://github.com/Olivetti/public/raw/master/avx-turbo.tar.gz)
 
-- [croc v10.0.13 ](https://github.com/Olivetti/public/raw/master/croc_10.0.13_Linux-64bit.deb)
+- [croc v10.1.0  ](https://github.com/Olivetti/public/raw/master/croc_10.1.0_Linux-64bit.deb)
 
 - [tar  v1.35    ](https://github.com/Olivetti/public/raw/master/tar-1.35.tar.gz)
 
@@ -10,6 +10,6 @@
 
 - [nc-deeaster v1](https://github.com/Olivetti/public/raw/master/nc-deeaster)
 
-- [#weather v1.0 ](#https://github.com/Olivetti/public/raw/master/weather)
+- [#weather v0   ](#https://github.com/Olivetti/public/raw/master/weather)
 
-- [#knocker v1.0 ](#https://github.com/Olivetti/public/raw/master/knocker)
+- [#knocker v0   ](#https://github.com/Olivetti/public/raw/master/knocker)
