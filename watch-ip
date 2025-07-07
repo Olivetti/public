@@ -21,8 +21,8 @@ i=1
 [[ "${opt_l}" ]] && logfile="${0##*/}.log" || logfile="/dev/null"
 
 case $(uname -s) in
-	Linux)	prg="ping -c1 -W1" ;; # for testing smartphones try -W2 (better reliability in sleep mode)
-	Darwin)	prg="ping -c1 -t1" ;;
+	Linux)	app="ping -c1 -W1" ;; # for testing smartphones try -W2 (better reliability in sleep mode)
+	Darwin)	app="ping -c1 -t1" ;;
 	*)	echo "No platform found."; exit 1 ;;
 esac
 
@@ -31,7 +31,7 @@ bspacer() { echo -en "${1} "; sleep 1; for bs in $(eval echo "{0..${#1}}"); do e
 
 while :
  do
-  ${prg} "${ip}" &>/dev/null && ping=true || ping=false
+  ${app} "${ip}" &>/dev/null && ping=true || ping=false
   [[ ${ping} = true  ]] && [[ ${ping} != ${flag} ]] && flag=${ping} && echo -e "$(isodate) - ${ip} is \033[32mup  \033[0m ($i)\a" | tee -a "${logfile}"
   [[ ${ping} = false ]] && [[ ${ping} != ${flag} ]] && flag=${ping} && echo -e "$(isodate) - ${ip} is \033[31mdown\033[0m ($i)\a" | tee -a "${logfile}"
   ((i++)); bspacer "${i}"
