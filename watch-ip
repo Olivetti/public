@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#set -vux
+#
+# watch-ip
+# © Olivetti 2016-2025
+#
+# Dependencies: ping sleep tee
+#
+
+version="v1.0"
+
+[[ "${1}" = "-h" ]] && echo "Syntax: ${0##*/} [ -h ] [ -l ] [ HOST|IP ]" && exit
+
+[[ "${1}" = "-l" ]] && opt_l=1 && shift # logging
+
+ip="${1:-fritz.box}"
+ping=false
+flag=null
+i=1
+
+[[ "${opt_l}" ]] && logfile="${0##*/}.log" || logfile="/dev/null"
+
+case $(uname -s) in
+	Linux)	prg="ping -c1 -W1" ;; # for testing smartphones try -W2 (better reliability in sleep mode)
+	Darwin)	prg="ping -c1 -t1" ;;
+	*)	echo "No platform found."; exit 1 ;;
+esac
+
+isodate() { date '+%FT%T%z'; }
+bspacer() { echo -en "${1} "; sleep 1; for bs in $(eval echo "{0..${#1}}"); do echo -en "\b"; done; }
+
+while :
+ do
+  ${prg} "${ip}" &>/dev/null && ping=true || ping=false
+  [[ ${ping} = true  ]] && [[ ${ping} != ${flag} ]] && flag=${ping} && echo -e "$(isodate) - ${ip} is \033[32mup  \033[0m ($i)\a" | tee -a "${logfile}"
+  [[ ${ping} = false ]] && [[ ${ping} != ${flag} ]] && flag=${ping} && echo -e "$(isodate) - ${ip} is \033[31mdown\033[0m ($i)\a" | tee -a "${logfile}"
+  ((i++)); bspacer "${i}"
+ done

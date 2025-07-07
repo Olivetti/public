@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#set -vux
+#
+# slping
+# © Olivetti 2015-2025
+#
+# Dependencies: date ping
+#
+# utf8 char table
+# http://www.utf8-chartable.de
+#
+# audioflag # ping -a doesn't work on &>/dev/null
+
+iphostlist="
+fritz.box
+192.168.178.11;tv
+192.168.178.12;server
+192.168.178.39;light
+
+8.8.4.4;Google1
+8.8.8.8;Google2
+204.79.197.200;Bing
+"
+
+# logmodes good, bad, all
+logmode=all
+
+# logfile=~/"${0##*/}.log"
+logfile="${0##*/}.log"
+
+### do not edit below this line ###
+
+version="v1.0"
+
+[[ "${1}" = "-h" ]] && echo "Syntax: ${0##*/} [ -h ] [ -a ] [ -l ] [ IP[;HOST] ] (use quotes)" && exit
+
+[[ "${1}" = "-a" ]] && opt_a=1 && shift # audioflag
+[[ "${1}" = "-l" ]] && opt_l=1 && shift # logging
+
+[[ "${1}" ]] && iphostlist="${1}"
+
+# u+25cf ●
+  red="\\033[31m\\0342\\0227\\0217\\033[0m"
+green="\\033[32m\\0342\\0227\\0217\\033[0m"
+
+beep()    { echo -en "\a"; }
+isodate() { date "+%FT%T%z"; }
+logger()  { printf "%s %-5s %-15s %s\n" "${pingdate}" "${ping}" "${ip}" "${host}" >>"${logfile}"; }
+
+while IFS=';' read ip host
+ do
+  [[ "${ip}" ]] && {
+   pingdate="$(isodate)"
+   ping -c1 -W1 "${ip}" &>/dev/null && ping=true || ping=false
+   [[ "${ping}" = true ]] && colorflag="${green}" || colorflag="${red}"
+   [[ "${opt_l}" ]] && echo -n "${pingdate} "; echo -en "${colorflag}  "; [[ "${host}" ]] && echo "${host}" || echo "${ip}"
+   [[ "${opt_a}" ]] && [[ "${ping}" = false ]] && beep
+
+   [[ "${opt_l}" ]] && [[ "${logmode}" = good ]] && [[ "${ping}" = true  ]] && logger
+   [[ "${opt_l}" ]] && [[ "${logmode}" = bad  ]] && [[ "${ping}" = false ]] && logger
+   [[ "${opt_l}" ]] && [[ "${logmode}" = all  ]] &&                            logger
+  }
+ done <<<"${iphostlist}"
