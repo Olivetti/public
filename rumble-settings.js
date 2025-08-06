@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        rumble - Settings
 // @version     1.0
-// @description rumble - Settings - 4.8.2025, 12:00:00
+// @description rumble - Settings
 // @author      Olivetti
 // @namespace   Violentmonkey Scripts
 // @match       https://rumble.com/*
@@ -19,12 +19,11 @@ let attr1  = 'data-theme';
 let value1 = 'dark';
 
 let attr2  = 'class';
-let value2 = 'main-menu-mode-permanent';
-
-let value3 = value1+" "+value2;
+let value2 = value1+' main-menu-mode-permanent';
 
 try{
   document.documentElement.setAttribute(attr1,value1);
-  document.documentElement.setAttribute(attr2,value3);
+  document.documentElement.setAttribute(attr2,value2);
 }catch{/*do nothing*/}
+
 //alert(document.documentElement.getAttribute(attr1));
