@@ -7,6 +7,7 @@
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=rumble.com
 // @downloadURL https://github.com/Olivetti/public/raw/master/rumble-settings.js
 // @updateURL   https://github.com/Olivetti/public/raw/master/rumble-settings.js
+// @homepageURL https://github.com/Olivetti/public
 // @supportURL  https://github.com/Olivetti/public
 // @author      Olivetti
 // @grant       none
