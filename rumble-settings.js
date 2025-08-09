@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        rumble - Settings
-// @description rumble - Settings
+// @description rumble - Settings - theme: dark - menu: collapsed
 // @version     1.0
 // @namespace   Violentmonkey Scripts
 // @match       https://rumble.com/*
