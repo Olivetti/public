@@ -2,7 +2,7 @@
 
 - [avx-turbo           ](https://github.com/Olivetti/public/raw/master/avx-turbo.tar.gz)
 
-- [croc v10.2.4        ](https://github.com/Olivetti/public/raw/master/croc_10.2.4_Linux-64bit.deb)
+- [croc v10.2.7        ](https://github.com/Olivetti/public/raw/master/croc_10.2.7_Linux-64bit.deb)
 
 - [tar  v1.35          ](https://github.com/Olivetti/public/raw/master/tar-1.35.tar.gz)
 
