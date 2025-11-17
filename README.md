@@ -14,6 +14,8 @@
 
 - [nc-deeaster v1      ](https://github.com/Olivetti/public/raw/master/nc-deeaster)
 
+- [rumble-quality v1.3 ](https://github.com/Olivetti/public/raw/master/rumble-quality.js)
+
 - [rumble-settings v1.0](https://github.com/Olivetti/public/raw/master/rumble-settings.js)
 
 - [#weather v0         ](#https://github.com/Olivetti/public/raw/master/weather)
