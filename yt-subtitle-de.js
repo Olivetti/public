@@ -3,7 +3,7 @@
 // @description youtube - Subtitles DE always on
 // @version     1.0
 // @namespace   Violentmonkey Scripts
-// @match       https://youtube.com/*
+// @match       https://*.youtube.com/*
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=youtube.com
 // @downloadURL https://github.com/Olivetti/public/raw/master/yt-subtitle-de.js
 // @updateURL   https://github.com/Olivetti/public/raw/master/yt-subtitle-de.js
