@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        youtube - Subtitles DE always on
 // @description youtube - Subtitles DE always on
-// @version     1.0
+// @version     1.1
 // @namespace   Violentmonkey Scripts
 // @match       https://*.youtube.com/*
 // @icon        https://www.google.com/s2/favicons?sz=64&domain=youtube.com
@@ -17,8 +17,9 @@
 
 (function() {
     'use strict';
-    localStorage.setItem('yt-player-caption-language-preferences', '{"data":"[\"de\"]","creation":1787586000000}');
+    localStorage.setItem('yt-player-caption-language-preferences', '{"data":"de"}');
     localStorage.setItem('yt-player-caption-persistence',          '{"data":"true"}');
+    localStorage.setItem('yt-player-volume',                       '{"data":"{\"volume\":50,\"muted\":false}"}');
     // localStorage.removeItem('yt-player-caption-sticky-language');
 })();
 
