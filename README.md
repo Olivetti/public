@@ -18,7 +18,7 @@
 
 - [rumble-settings v1.0](https://github.com/Olivetti/public/raw/master/rumble-settings.js)
 
-- [yt-subtitle-de v1.1 ](https://github.com/Olivetti/public/raw/master/yt-subtitle-de.js)
+- [yt-tool v1.0        ](https://github.com/Olivetti/public/raw/master/yt-tool.js)
 
 - [#weather v0         ](#https://github.com/Olivetti/public/raw/master/weather)
 
