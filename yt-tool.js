@@ -63,7 +63,7 @@
 
   // Direkt beim Laden setzen
   forceStoredVolume();
-  alert(sessionStorage.getItem(STORAGE_KEY)+'\n'+sessionStorage.getItem(STORAGE_KEY2)+'\n'+localStorage.getItem(STORAGE_KEY3));
+  //alert(sessionStorage.getItem(STORAGE_KEY)+'\n'+sessionStorage.getItem(STORAGE_KEY2)+'\n'+localStorage.getItem(STORAGE_KEY3));
 
 
 /*
@@ -132,21 +132,3 @@
   }, 3000);
 */
 })();
-
-
-/*
-(function() {
-    'use strict';
-    localStorage.setItem('yt-player-caption-language-preferences', '{"data":"de"}');
-    localStorage.setItem('yt-player-caption-persistence',          '{"data":"true"}');
-    localStorage.setItem('yt-player-volume',                       '{"data":"{\"volume\":50,\"muted\":false}"}');
-    // localStorage.removeItem('yt-player-caption-sticky-language');
-})();
-*/
-
-// try {
-//   document.documentElement.setAttribute(attr1,value1);
-//   document.documentElement.setAttribute(attr2,value2);
-// } catch(error) {
-//   console.error(error);
-// }
