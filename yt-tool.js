@@ -25,9 +25,9 @@
   const STORAGE_KEY2 = 'yt-player-caption-language-preferences';
   const STORAGE_KEY3 = 'yt-player-caption-persistence';
 
-  // 1. localStorage-Eintrag, den YouTube selbst zum Speichern der Lautstärke nutzt,
+  // 1. session-/localStorage-Eintrag, den YouTube selbst zum Speichern der Lautstärke nutzt,
   //    beim Start und bei jeder Änderung überschreiben.
-  function forceStoredVolume() {
+  function forceVolume() {
     try {
       const TIMESTAMP = Date.now();
 
@@ -61,7 +61,7 @@
   }
 
   // Direkt beim Laden setzen
-  forceStoredVolume();
+  forceVolume();
   //alert(sessionStorage.getItem(STORAGE_KEY)+'\n'+sessionStorage.getItem(STORAGE_KEY2)+'\n'+localStorage.getItem(STORAGE_KEY3));
 
 
@@ -71,7 +71,7 @@
   localStorage.setItem = function (key, value) {
     if (key === STORAGE_KEY) {
       // Statt des von YouTube gewünschten Werts unseren Zielwert schreiben
-      forceStoredVolume();
+      forceVolume();
       return;
     }
     return originalSetItem(key, value);
@@ -126,7 +126,7 @@
 
   // Sicherheitsnetz: alle paar Sekunden nochmal prüfen
   setInterval(() => {
-    forceStoredVolume();
+    forceVolume();
     scanForVideos();
   }, 3000);
 */
