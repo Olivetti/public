@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Youtube - Tool
-// @description Volume 50, CC de
+// @description Force Volume 50 & CC de
 // @version     1.0
 // @namespace   Violentmonkey Scripts
 // @match       https://www.youtube.com/*
