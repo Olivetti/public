@@ -2,8 +2,6 @@
 
 - [avx-turbo           ](https://github.com/Olivetti/public/raw/master/avx-turbo.tar.gz)
 
-- [croc v10.2.7        ](https://github.com/Olivetti/public/raw/master/croc_10.2.7_Linux-64bit.deb)
-
 - [tar  v1.35          ](https://github.com/Olivetti/public/raw/master/tar-1.35.tar.gz)
 
 - [zstd v1.5.5         ](https://github.com/Olivetti/public/raw/master/zstd-1.5.5.tar.gz)
@@ -18,7 +16,7 @@
 
 - [rumble-settings v1.0](https://github.com/Olivetti/public/raw/master/rumble-settings.js)
 
-- [yt-subtitle-de v1.0 ](https://github.com/Olivetti/public/raw/master/yt-subtitle-de.js)
+- [yt-tools v1.0       ](https://github.com/Olivetti/public/raw/master/yt-tools.js)
 
 - [#weather v0         ](#https://github.com/Olivetti/public/raw/master/weather)
 
