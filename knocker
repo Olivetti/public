@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+#set -vux
+#
+# knocker (open/close SSH port via port knock)
+# © Olivetti 2024-2026
+#
+# Dependencies: nmap
+#
+
+version="v1.0"
+
+#  host file in ~/.knocker-host		# test.com
+# ports file in ~/.knocker-ports
+#  port_open_order="1111 2222 3333"
+# port_close_order="4444 5555 6666"
+
+[[ "${1,,}" != "open"  ]] && [[ "${1,,}" != "close" ]] || \
+[[ ${#} -eq 0 ]] || [[ "${1}" = "-h" ]] && echo "Syntax: ${0##*/} open [host] | close [host]" && exit
+
+#app="nc -z -w3"
+app="nmap -PN -p"
+
+host_file=~/.knocker-host
+[[ -s "${host_file}" ]] && host=$(head -1 "${host_file}" | tail -1 | cut -f1)	# forcing first row & column in file
+
+knocker_ports_file=~/.knocker-ports
+[[ -s "${knocker_ports_file}" ]] && source "${knocker_ports_file}" || { echo "Error: No knocker ports file"; exit 1; }
+
+host="${2:-${host}}"
+[[ ! "${host}" ]] && echo "Error: Empty host" && exit 2
+
+open_or_close="${1,,}"					# lowercaseing (…,,)
+ports_open_or_close="port_${open_or_close}_order"	# prepare for indirection
+ports="${!ports_open_or_close}"				# indirection  (!…)
+msg="${open_or_close^}"					# first uppercaseing (…^)
+
+echo "${msg:0:4}ing SSH Port"				# e-stripping from 'close' (…:0:4)
+
+#for port in ${ports}; do
+#	${app} ${port} ${host}				# now we use the amazing & gorgious KIO-technique - see below
+#done
+
+echo ${app} ${ports// /,} ${host}
+${app} ${ports// /,} ${host}				# knock-in-one with nmap
+
+
+###
+# mini-knocker (open)
+#  port_open_order="1111 2222 3333"
+# port_close_order="4444 5555 6666"
+# host="test.com"
+# ssh_port="22"
+#
+# app="nc -z -w3"
+#
+# ports="${port_open_order}"
+#
+# echo "Opening  SSH Port…"
+# for port in ${ports}; do
+#	${app} ${host} ${port}
+# done
+#
+# msg="Connection to ${host} ${ssh_port} port [tcp/ssh]"
+#
+# echo -n "Checking SSH Port: "
+# ${app} ${host} ${ssh_port}		\
+#	&& echo "${msg} is open"	\
+#	|| echo "${msg} FAILED"
